@@ -65,10 +65,11 @@ public class CircularLinkedList {
                     if (current == head && current.next == current) { // Единственный элемент
                         head = null;
                     } else if (current == head) { // Удаление головного элемента
-                        head = current.next;
-                        head.prev = current.prev;
-                        current.prev.next = head;
+                        head = current.next; // Перемещаем головной элемент на один шаг вперед в списке
+                        head.prev = current.prev; // Указываем на элемент, который был перед текущим
+                        current.prev.next = head; // Указываем на новый головной элемент
                     } else {
+                        // Обновление указателей (у предыдущего - на следующий, у следующего - на предыдущий)
                         current.prev.next = current.next; // Связываем предыдущий элемент со следующим
                         current.next.prev = current.prev; // Связываем предыдущий элемент следующего элемента с предыдущим
                     }
